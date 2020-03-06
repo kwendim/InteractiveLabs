@@ -4,3 +4,5 @@ channels
 paramiko
 kubernetes
 pyyaml
+django-crispy-forms
+django-allauth

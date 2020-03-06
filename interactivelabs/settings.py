@@ -28,6 +28,29 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = LOGIN_URL
+ACCOUNT_FORMS = {'signup': 'labs.forms.RegistrationForm'}
+SOCIALACCOUNT_ADAPTER = 'labs.forms.CustomSocialAccountAdapter'
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '76228701435-1dmuav3447cieice98k29cqugsbphdik.apps.googleusercontent.com',
+            'secret': '5gAxqldqOVdOfQroDgW6Sx-A',
+            'key': 'AIzaSyBdN-PFp9wPcPGfpjHf-Hf9qUw3-uzN8LE'
+        }
+    }
+}
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +62,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'channels',
+    'django.contrib.sites',
+    'crispy_forms',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google'
 ]
 
 MIDDLEWARE = [
@@ -50,7 +79,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+SITE_ID = 1
 ROOT_URLCONF = 'interactivelabs.urls'
 
 TEMPLATES = [
@@ -122,5 +151,5 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'

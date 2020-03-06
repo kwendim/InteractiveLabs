@@ -8,9 +8,9 @@ services:
       POSTGRES_NAME: interactivelabs
       POSTGRES_USER: interactivelabs
       POSTGRES_PASSWORD: "!nt3r@ct!v3l@bs"
-  web: 
+  web:
     build: . #this line tells it to build the image from the current folder. That is, makes it from the Dockerfile
-    command: python manage.py runserver 0:8000
+    command: bash -c "python manage.py migrate && python manage.py runserver 0:8000"
     volumes:
       - .:/code
     ports:
@@ -18,5 +18,5 @@ services:
     depends_on:
       - db
   ssh_server:
-    image: ubuntu:ssh
+    image: kwendim/ubuntu:ssh
     command: bash -c "service ssh restart && tail -F anything"

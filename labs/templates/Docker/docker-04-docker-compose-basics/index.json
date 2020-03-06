@@ -1,0 +1,60 @@
+{
+  "pathwayTitle": "Docker Compose Basics",
+  "title": "Docker Compose Basics",
+  "description": "One of Docker's effective tools is Docker Compose, and you can learn the very basics here.",
+  "difficulty": "Intermediate",
+  "time": "15-20 minutes",
+  "details": {
+    
+    "steps": [
+      {
+        "title": "Confirming Installation",
+        "text": "step1.md"
+      },
+      {
+        "title": "Setup",
+        "text": "step2.md"
+      },
+      {
+        "title": "Create a Dockerfile",
+        "text": "step3.md"
+      },
+      {
+        "title": "Define Services in Compose File",
+        "text": "step4.md"
+      },
+      {
+        "title": "Build and run your app with Compose",
+        "text": "step5.md"
+      },
+      {
+        "title": "Updating an App",
+        "text": "step6.md"
+      },
+      {
+        "title": "Experiment with some other commands",
+        "text": "step7.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "code": "env-init.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+
+  },
+    
+  "environment": {
+	"showdashboard": true,
+	"dashboards": [{"name": "Browser", "port": 5000}],
+    "uilayout": "editor-terminal",
+	"uimessage1": "\u001b[32mYour Interactive Host Terminal.\u001b[m\r\n"
+	},
+
+	"backend": {
+		"imageid": "docker"
+	}
+  }
+ 

@@ -1,0 +1,12 @@
+<div id="task-{{ task_id }}" class="task {% if task_id != 0 %} hidden {% endif %}">
+  <div class="content">
+    {% with template_name=course|add:"/"|add:lab|add:"/"|add:task|stringformat:"s" %}
+        {% include ""|add:template_name %}
+    {% endwith %}
+  </div>
+  <div class="row">
+      <button class="col s12 l5 primary-btn next right">
+        {{button_text}}
+      </button>
+  </div>
+</div>
