@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: studentno
+  name: studentno
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: studentno
+  template:
+    metadata:
+      labels:
+        app: studentno
+    spec:
+      containers:
+      - name: ubuntustudent
+        command: ["tail", "-F", "anything"]
+        image: kwendim/ubuntu:ssh
+      restartPolicy: Never
+status: {}
