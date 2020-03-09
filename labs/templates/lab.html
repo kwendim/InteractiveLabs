@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Course - {{ course }}{% endblock %}
+
+{% block head %}
+    {{ block.super }}
+    <meta property="og:title" content="{{ lab }}"/>
+    <meta property="og:locale" content="en_GB"/>
+    <meta property="og:site_name" content="CNIL"/>
+    <meta property="og:description" content="description"/>
+    <link rel="stylesheet" href="https://unpkg.com/xterm@4.4.0/css/xterm.css" />
+    <script src="https://unpkg.com/xterm@4.4.0/lib/xterm.js"></script>
+    <script src="https://unpkg.com/xterm-addon-attach@0.5.0/lib/xterm-addon-attach.js" ></script>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row content">
+    <div class="split left">
+      <div class="centered">
+        <div id="task-progress" class="hidden" data-tasks="{{tasks|length|add:'2'}}">
+          <i class="fa fa-caret-left" style="color: #0000"></i>
+          <span id="task-progress-text"><span>Task</span> <span class="current_task">0</span> of <span class="number_of_tasks">{{tasks|length}}</span></span>
+
+          <i class="fa fa-caret-right"></i>
+        </div>
+        <!-- CAN MAKE IT AJAX REPLACABLE IF CONTENT SHOULD BE HIDDEN BEFORE FINISHING THE PREVIOUS TASK, OR YOU CAN MOVE TO NEXT ONE WITHOUT GETTING THE POINTS FOR PREVIOUS task -->
+        {% include "task_left_template.html" with task_id=0 task=intro button_text="Start" %}
+
+
+        {% for task in tasks %}
+          {% include "task_left_template.html" with task_id=forloop.counter task=task button_text="Continue" %}
+        {% endfor %}
+
+        {% include "task_left_template.html" with task_id=tasks|length|add:"1" task=finish button_text="Finish"%}
+
+
+      </div>
+    </div>
+    <div class="split right">
+      <div class="centered">
+        <h2>This would be the terminal</h2>
+        <div id="terminal"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+  var lab_id = "{{lab_id}}";
+  var chatSocket = new WebSocket('ws://' + window.location.host + '/ws/labs/1/');
+
+      // chatSocket.onmessage = function(e) {
+      //     var data = JSON.parse(e.data);
+      //     var message = data['message'];
+      //     console.log("received: " + message);
+
+      // };
+
+    //   chatSocket.onclose = function(e) {
+    //       console.error('Chat socket closed unexpectedly');
+    //   };
+
+    const term = new Terminal({
+        cursorBlink: true,
+        macOptionIsMeta: true,
+        scrollback: true,
+    });
+    const attachAddon = new AttachAddon.AttachAddon(chatSocket);
+    term.loadAddon(attachAddon)
+
+    term.open(document.getElementById('terminal'));
+
+    term.write("Welcome to cloud native interactive Labs\n")
+
+    
+    // term.onData(onkeypressed);
+    
+    // function onkeypressed(key) {
+    //   chatSocket.send(JSON.stringify({
+    //           'message': key.toString() + " was pressed"
+    //   }));
+    // }
+</script>
+{% endblock %}

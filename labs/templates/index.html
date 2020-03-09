@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Course - {{ course }}{% endblock %}
+
+{% block head %}
+    {{ block.super }}
+    <meta property="og:title" content="Cloud Native Interactive Labs"/>
+    <meta property="og:locale" content="en_GB"/>
+    <meta property="og:site_name" content="CNIL"/>
+    <meta property="og:description" content="description"/>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row content">
+    <div class="">
+      <h1 class="title">This is the course index page </h1>
+      {% for course, labs_count in courses.items %}
+        <div class="course">
+            <i class=""></i>
+            <span class="count">{{labs_count}} labs</span>
+            <h4>{{course}}</h4>
+            <p>Here goes the course description</p>
+            <a class="action start" href="/course/{{course}}">
+              Start Course
+            </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

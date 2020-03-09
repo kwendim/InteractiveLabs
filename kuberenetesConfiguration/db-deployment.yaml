@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: db
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_NAME
+          value: interactivelabs
+        - name: POSTGRES_PASSWORD
+          value: '!nt3r@ct!v3l@bs'
+        - name: POSTGRES_USER
+          value: interactivelabs
+        image: postgres
+        name: db
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

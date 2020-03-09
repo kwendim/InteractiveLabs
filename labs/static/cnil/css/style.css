@@ -1,0 +1,175 @@
+
+/******************************************** index.html *********************************************/
+body{
+  font-family: sans-serif;
+}
+
+.lab{
+  min-width: 220px;
+  width: 22%;
+  margin-right: 26px;
+  float: left;
+  color: #fff;
+  position: relative;
+  padding: 26px;
+  height: 340px;
+  margin-bottom: 26px;
+  overflow: hidden;
+  background-color: gray;
+}
+
+.count{
+  float: right;
+  border: 2px solid #fff;
+  padding: 5px 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.lab h4{
+  font-size: 200%;
+}
+.action {
+    height: 58px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    color: #fff;
+    text-align: center;
+    line-height: 58px;
+    font-size: 125%;
+    font-weight: 100;
+    z-index: 9999;
+}
+.action.start {
+    background: #2babd6;
+    background-color: #2babd6;
+    border-bottom: 2px solid #2babd6;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #2babd6;
+}
+a, a:hover {
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+}
+
+/******************************************** course.html *********************************************/
+.course{
+  min-width: 220px;
+  width: 22%;
+  margin-right: 26px;
+  float: left;
+  color: #fff;
+  position: relative;
+  padding: 26px;
+  height: 340px;
+  margin-bottom: 26px;
+  overflow: hidden;
+  background-color: #210070;
+}
+
+.course h4{
+  font-size: 200%;
+}
+.course .action {
+    height: 58px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    color: #fff;
+    text-align: center;
+    line-height: 58px;
+    font-size: 125%;
+    font-weight: 100;
+    z-index: 9999;
+}
+.course .action.start {
+    background: #2babd6;
+    background-color: #2babd6;
+    border-bottom: 2px solid #2babd6;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #2babd6;
+}
+
+/******************************************** lab.html *********************************************/
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 40px;
+}
+
+.split.left{
+  width: 40%;
+}
+
+.split.right{
+  width: 60%;
+}
+/* Control the left side */
+.left {
+  left: 0;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+}
+.centered{
+  padding: 20px;
+}
+.literal {
+  cursor: pointer;
+  color: #fff;
+  background: #555;
+  padding: 2px 5px;
+  display: inline-block;
+  white-space: pre-wrap;
+}
+
+button{
+  line-height: 56px;
+  height: 56px;
+  background: #fd7700;
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
+  display: inline-block;
+  float: right;
+  cursor: pointer;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.task{
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+#task-progress {
+    text-align: center;
+    margin-bottom: 0;
+}
+#task-progress #task-progress-text {
+    color: #2babd6;
+    font-weight: 900;
+}

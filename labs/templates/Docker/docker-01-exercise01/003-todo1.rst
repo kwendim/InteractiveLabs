@@ -1,0 +1,36 @@
+MongoDB as a Docker Container
+-----------------------------
+
+Let's start by pulling the docker image:
+
+``docker pull mongo``
+
+To run the process in the background we will add the parameter ``-d``
+
+For administration purposes we will give the container the name mongodb:
+``--name mongodb``
+
+We have to map the tcp port from the container to the port in the docker
+host, for that we use the option: ``-p HOST:CONTAINER``
+
+Finally, to keep persitance of the data we mount the directory
+``~/data`` from the host to the directory ``/data/db`` in the container
+using the option ``-v``
+
+The complete commands should looks like:
+
+``docker run -d --name mongodb -p 27017:27017 -v ~/data:/data/db mongo``
+
+You can expect the content of the container by typping:
+
+``docker exec -it <CONTAINER_ID> bash``
+
+To quit from the container just do: ``quit``
+
+Now we are going to connect to the database, first we need to install
+the client:
+
+``apt-get install -y mongodb-clients``\ {{execute}}
+
+In the next step we will connect to the database and populate it with
+data.

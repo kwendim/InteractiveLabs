@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Course - {{ course }}{% endblock %}
+
+{% block head %}
+    {{ block.super }}
+    <meta property="og:title" content="{{ course }}"/>
+    <meta property="og:locale" content="en_GB"/>
+    <meta property="og:site_name" content="CNIL"/>
+    <meta property="og:description" content="description"/>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row content">
+    <div class="document">
+      <h1 class="title">This is the page for the course: {{course}} </h1>
+      {% for lab, data in labs.items %}
+          <div class="lab">
+            <i class=""></i>
+            <span class="count">{{data.details.steps|length}} TASKS</span>
+            <h4>{{data.title}}</h4>
+            <p>{{data.description}}</p>
+            <a class="action start" href="/course/{{course}}/{{lab}}">
+              Start Lab
+            </a>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

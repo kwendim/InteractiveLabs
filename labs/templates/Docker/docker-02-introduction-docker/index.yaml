@@ -1,0 +1,31 @@
+---
+title: Introduction to Docker
+description: Explore Docker help, pull images from dockerhub and launch containers
+  from images.
+difficulty: Beginner
+time: 15 minutes
+details:
+  steps:
+  - title: Exploring Docker Help
+    text: step1.md
+  - title: Pulling Images Down From Docker Hub
+    text: step2.md
+  - title: Launching Containers From Images
+    text: step3.md
+  intro:
+    text: intro.md
+    code: env-init.sh
+  finish:
+    text: finish.md
+files:
+- playbook.yml
+environment:
+  showdashboard: true
+  dashboards:
+  - name: Browser
+    port: 8080
+  uilayout: terminal
+  uisettings: yaml
+  uimessage1: "\e[32mYour Interactive Host Terminal.\e[m\r\n"
+backend:
+  imageid: docker

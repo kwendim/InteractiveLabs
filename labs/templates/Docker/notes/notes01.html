@@ -1,0 +1,47 @@
+<pre>
+-- Install docker:
+
+sudo yum -y install docker
+
+-- set up docker group
+
+groupadd docker
+usermod -aG docker cloud_user
+systemctl enable --now docker
+
+-- check docker is running
+
+docker ps
+
+
+Install Docker from the Default CentOS 7 Repository
+keyboard_arrow_up
+
+After logging into the server, install the latest version of Docker using yum.
+
+$ sudo yum -y install docker
+
+check_circle
+Enable & start Docker service
+keyboard_arrow_up
+
+Once installation completes, enable & start the service using systemd.
+check_circle
+User Permissions
+keyboard_arrow_up
+
+Create a new group named docker, then add the cloud_user user to the group.
+check_circle
+hello-world
+keyboard_arrow_up
+
+After starting *& enabling Docker, run the hello-world container image to verify installation.
+check_circle
+Pull Images
+keyboard_arrow_up
+
+After getting a valid return message from the hello-world image, pull the following images into your Docker repository to prepare for the next exercise.
+
+    06kellyjac/nyancat
+    jeremy646/doge
+</pre>

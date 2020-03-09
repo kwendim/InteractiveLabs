@@ -1,0 +1,8 @@
+Django>=3.0
+psycopg2>=2.7,<3.0
+channels
+paramiko
+kubernetes
+pyyaml
+django-crispy-forms
+django-allauth
