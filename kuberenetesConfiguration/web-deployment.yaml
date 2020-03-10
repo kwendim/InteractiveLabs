@@ -32,8 +32,9 @@ spec:
           value: interactivelabs
         image: postgres
       - name: web
-        command: ["/bin/bash","-c", "sleep 15 && python /code/manage.py runserver 0:8000"]
+        command: ["/bin/bash","-c", "sleep 15 && python /code/manage.py migrate && python /code/manage.py runserver 0:8000"]
         image: kwendim/web:0.1
+        #imagePullPolicy: Always
         ports:
         - containerPort: 8000
       restartPolicy: Always

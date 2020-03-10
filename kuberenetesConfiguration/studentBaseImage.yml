@@ -1,22 +1,11 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod 
 metadata:
   labels:
     app: studentno
   name: studentno
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: studentno
-  template:
-    metadata:
-      labels:
-        app: studentno
-    spec:
-      containers:
-      - name: ubuntustudent
-        command: ["tail", "-F", "anything"]
-        image: kwendim/ubuntu:ssh
-      restartPolicy: Never
-status: {}
+  containers:
+  - name: ubuntustudent
+    command: ["/bin/bash", "-c", "service ssh start && tail -F anything"]
+    image: kwendim/ubuntu:ssh
