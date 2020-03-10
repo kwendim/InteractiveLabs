@@ -16,7 +16,6 @@ spec:
       labels:
         app: web
     spec:
-      serviceAccountName: webserver
       hostAliases:
           - ip: "127.0.0.1"
             hostnames:
@@ -37,5 +36,13 @@ spec:
         #imagePullPolicy: Always
         ports:
         - containerPort: 8000
+        volumeMounts:
+          - mountPath: /code/labs/templates/courses
+            name: webhook-claim
       restartPolicy: Always
+      serviceAccountName: webserver
+      volumes:
+        - name: webhook-claim
+          persistentVolumeClaim:
+            claimName: webhook-claim
 status: {}
