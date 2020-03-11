@@ -6,3 +6,4 @@ kubernetes
 pyyaml
 django-crispy-forms
 django-allauth
+gitpython
