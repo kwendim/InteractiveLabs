@@ -5,8 +5,15 @@ First apply the serviceaccount and then cluster role
     kubectl apply -f serviceAccount.yml
     kubectl apply -f clusterRoles.yml
 
-Then the webserver/db deployment and the service to make it accessible externally 
+Then apply the persistent volume claim to make persistent storage for the webhooks and database
 
+    kubectl apply -f web-claim-pvc.yaml
+
+
+Then the webserver/db deployment and the service to make it accessible externally 
+    
+    kubectl apply -f db-deployment.yaml    (for the time being, the database must first be deployed before the webserver is started)
+    kubectl apply -f db-service.yaml
     kubectl apply -f web-deployment.yaml
     kubectl apply -f web-service.yaml
 
