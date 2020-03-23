@@ -55,7 +55,7 @@ AUTHENTICATION_BACKENDS = (
 # Application definition
 
 INSTALLED_APPS = [
-    'labs.apps.LabsConfig',
+    'labs',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

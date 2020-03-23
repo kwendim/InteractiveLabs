@@ -37,10 +37,9 @@ def lab(request, course_id, lab_id):
 # Get the filenames for the intro, steps and finish
     intro = dataMap['details']['intro']['text'][0:-2]+'html'
     for item in dataMap['details']['steps']:
-        tasks.append(item['text'])
+        tasks.append(item['text'][0:-2] + "html")
     finish = dataMap['details']['finish']['text'][0:-2]+'html'
 # Convert the filenames from md extension to html. Our html files have the same names as the md files.
-    tasks = [x[0:-2] + "html" for x in tasks]
     return render(request, 'lab.html', {'course': course_id, 'lab': lab_id, 'tasks': tasks, 'intro': intro, 'finish': finish, 'data': dataMap})
 
 
