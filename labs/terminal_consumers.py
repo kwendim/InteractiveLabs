@@ -1,22 +1,25 @@
 from channels.generic.websocket import WebsocketConsumer
 import json
 from labs.ssh import SSH
+from labs.kubeCommands import Kubernetes
 
 class TerminalConsumer(WebsocketConsumer):
 
     def connect(self):
-        #Maybe not accept a connection based on some requirements
-        # containers should be spawned before the connection is established
+        #TODO Maybe not accept a connection based on some requirements
+        #containers should be spawned before the connection is established
 
 
         self.accept()
-        self.ssh = SSH(websocket=self)
 
         #check the ip address of the device to be connected to
         path_to_keyFile = "privateKey.pem"
-        ip_address = "172.18.0.2" 
+        pod = Kubernetes("studentno", "/code/kuberenetesConfiguration/studentBaseImage.yml" )
 
-        self.ssh.connect(ip_address, path_to_keyFile)
+        ip_address = pod.createPod() #TODO make checks if the creation of Pod was successful 
+
+        self.ssh = SSH(websocket=self, kubernetesPod = pod)
+        self.ssh.connect(ip_address, path_to_keyFile, pod)
 
 
     def disconnect(self, close_code):

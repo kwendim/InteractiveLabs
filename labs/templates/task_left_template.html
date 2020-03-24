@@ -1,7 +1,7 @@
 <div id="task-{{ task_id }}" class="task {% if task_id != 0 %} hidden {% endif %}">
   <div class="content">
     {% with template_name=course|add:"/"|add:lab|add:"/"|add:task|stringformat:"s" %}
-        {% include ""|add:template_name %}
+        {% include "courses/"|add:template_name %}
     {% endwith %}
   </div>
   <div class="row">

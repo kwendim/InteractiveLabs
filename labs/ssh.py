@@ -3,8 +3,9 @@ from threading import Thread
 from io import StringIO
 
 class SSH:
-    def __init__(self, websocket):
+    def __init__(self, websocket, kubernetesPod):
         self.websocket = websocket
+        self.kubernetesPod = kubernetesPod
         self.cmd = ''
         self.res = ''
     
@@ -57,8 +58,9 @@ class SSH:
         self.channel.close()
         self.ssh_client.close()
         self.websocket.close()
+        self.kubernetesPod.deletePod()
     
-        print("channel, ssh_client and websocket closed")
+        print("channel, ssh_client and websocket closed. Pod deleted")
 
     def shell(self, data):
         try:

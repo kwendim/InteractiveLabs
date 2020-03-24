@@ -15,16 +15,23 @@ spec:
         app: db
     spec:
       containers:
-      - env:
+      - name: db
+        image: postgres
+        imagePullPolicy: "IfNotPresent"
+        ports:
+        - containerPort: 5432
+        env:
         - name: POSTGRES_NAME
           value: interactivelabs
         - name: POSTGRES_PASSWORD
           value: '!nt3r@ct!v3l@bs'
         - name: POSTGRES_USER
           value: interactivelabs
-        image: postgres
-        name: db
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgredb
       restartPolicy: Always
-      serviceAccountName: ""
-      volumes: null
-status: {}
+      volumes:
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: postgres-claim
